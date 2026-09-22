@@ -47,6 +47,23 @@ jobs:
       - name: Install dbt
         run: pip install dbt-databricks
 
+      - name: Create dbt profile
+        shell: bash
+        run: |
+          mkdir -p ~/.dbt
+          cat > ~/.dbt/profiles.yml <<'EOF'
+          healthcare_fhir_analytics:
+            target: ci
+            outputs:
+              ci:
+                type: databricks
+                catalog: workspace
+                schema: default
+                host: https://placeholder.databricks.com
+                http_path: /sql/1.0/warehouses/placeholder
+                auth_type: oauth
+          EOF
+
       - name: dbt Parse
         working-directory: dbt
         run: dbt parse
