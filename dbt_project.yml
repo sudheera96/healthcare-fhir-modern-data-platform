@@ -1,0 +1,19 @@
+name: healthcare_fhir_analytics
+version: '1.0.0'
+config-version: 2
+
+profile: healthcare_fhir_analytics
+
+model-paths: ["dbt/models"]
+test-paths: ["dbt/tests"]
+macro-paths: ["dbt/macros"]
+seed-paths: ["dbt/seeds"]
+
+models:
+  healthcare_fhir_analytics:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: view
+    marts:
+      +materialized: table

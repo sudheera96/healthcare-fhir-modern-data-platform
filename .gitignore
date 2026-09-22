@@ -1,0 +1,25 @@
+# Synthetic healthcare data
+data/raw/
+data/processed/
+data/quarantine/
+
+# Local Databricks artifacts
+.databricks/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# dbt generated artifacts
+dbt/target/
+dbt/logs/
+target/
+logs/
+
+# Terraform local state
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log

@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: stg_patient_360
+    columns:
+      - name: patient_id
+        data_tests:
+          - not_null
+          - unique
+
+      - name: diabetes_status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['Yes', 'No']
+
+      - name: hypertension_status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['Yes', 'No']
+
+  - name: stg_diabetes_care_gap
+    columns:
+      - name: patient_id
+        data_tests:
+          - not_null
+          - unique
+
+      - name: hba1c_care_gap
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['care_gap', 'up_to_date']
+
+  - name: stg_hypertension_care_gap
+    columns:
+      - name: patient_id
+        data_tests:
+          - not_null
+          - unique
+
+      - name: bp_care_gap
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['care_gap', 'up_to_date']
+
+  - name: mart_healthcare_quality
+    columns:
+      - name: analysis_date
+        data_tests:
+          - not_null
+
+      - name: total_patients
+        data_tests:
+          - not_null
